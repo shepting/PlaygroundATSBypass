@@ -10,6 +10,9 @@ class NetworkEnabler: NSObject, NSURLSessionDelegate {
     }
 }
 let enabler = NetworkEnabler()
+
+// This is the key line that sets the delegate on the `NSURLSession` to bypass ATS
+let session = NSURLSession(configuration: NSURLSession.sharedSession().configuration, delegate: enabler, delegateQueue: nil)
 ```
 
 This is equivalent to using something like 
